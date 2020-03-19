@@ -13,34 +13,45 @@ var password,
   chooseUpper,
   chooseSymbol
 
-//Prompt and Confirm user Input
-passwordLength = prompt("Please enter a Number betweeen '8' and '128'");
-if (passwordLength >= 8 && passwordLength <= 128) {
-  console.log(passwordLength);
-  chooseLower = confirm("Do you want to include LOWERCASE in your password?")
-  console.log(chooseLower);
-  chooseUpper = confirm("Do you want to include UPPERCASE in your password?")
-  console.log(chooseUpper);
-  chooseNum = confirm("Do you want to include NUMBERS in your password?")
-  console.log(chooseNum);
-  chooseSymbol = confirm("Do you want to include SYMBOLS in your password?")
-  console.log(chooseSymbol);
-  if (chooseLower === false && chooseUpper === false && chooseNum === false
-    && chooseSymbol === false) {
-    alert("You MUST select atleast one character type input to generate password .");
-  } else {
-    alert("Please click on 'Generate Password' button to generate a new password.")
+// Add event listener to either prompt or to generate password by clicking generate button
+generateBtn.addEventListener("click", function(event){
+  event.preventDefault();
+  //if the given condition is met it will prompt user series of question
+  if(passwordText.textContent = " "){   
+    passwordLength = prompt("Please enter a Number betweeen '8' and '128'");
+    if(passwordLength >=8 && passwordLength <= 128){
+      console.log(passwordLength);
+      console.log(passwordLength);
+      chooseLower = confirm("Do you want to include LOWERCASE in your password?")
+      console.log(chooseLower);
+      chooseUpper = confirm("Do you want to include UPPERCASE in your password?")
+      console.log(chooseUpper);
+      chooseNum = confirm("Do you want to include NUMBERS in your password?")
+      console.log(chooseNum);
+      chooseSymbol = confirm("Do you want to include SYMBOLS in your password?")
+      console.log(chooseSymbol);
+      //Goes inside this condition only if user does not select any input character
+      if (chooseLower === false && chooseUpper === false && chooseNum === false   
+        && chooseSymbol === false) {
+        alert("You MUST select atleast one character type input to generate password .");
+      }
+      //calls the write password function at the end of prompt selection
+      writePassword();  
+    } else {
+        alert("You MUST select a number betweeen 8 and 128 to continue creating password..");
+      }
+  }else{
+    alert("Please refresh the page and click generate button to generate a new password..") // Not necessary but still just to be safe
   }
-} else {
-  alert("You MUST select a number betweeen 8 and 128 to continue creating password..");
-}
+});
 
 //Function to generate an array of random character type
 function generatePassword() {
   password = "";
   randomCharType = "";
   if (chooseLower === true) {
-    randomCharType += lowerCase; //This means randomCharType = randomCharType + lowerCase 
+    //This means randomCharType = randomCharType + lowerCase
+    randomCharType += lowerCase;  
   }
   if (chooseUpper === true) {
     randomCharType += upperCase;
@@ -59,19 +70,15 @@ function generatePassword() {
     untill the length is met..
     */
   }
-  /*
+  
   //This alert will display user their new password everytime Generate Password is clicked
-  alert("Your New Secure Password is: " + password);
-  */
+  // alert("Your New Secure Password is: " + password);
 }
 
 //Write password to the #password input
 function writePassword() {
   generatePassword();
-  // var passwordText = document.querySelector("#password"); THIS IS REPEAT FOR ME
   passwordText.innerHTML = password;
   console.log(password);
 }
 
-// Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
