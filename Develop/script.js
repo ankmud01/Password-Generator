@@ -20,16 +20,15 @@ generateBtn.addEventListener("click", function(event){
   if(passwordText.textContent = " "){   
     passwordLength = prompt("Please enter a Number betweeen '8' and '128'");
     if(passwordLength >=8 && passwordLength <= 128){
-      console.log(passwordLength);
-      console.log(passwordLength);
+        console.log(passwordLength);
       chooseLower = confirm("Do you want to include LOWERCASE in your password?")
-      console.log(chooseLower);
+        console.log(chooseLower);
       chooseUpper = confirm("Do you want to include UPPERCASE in your password?")
-      console.log(chooseUpper);
+        console.log(chooseUpper);
       chooseNum = confirm("Do you want to include NUMBERS in your password?")
-      console.log(chooseNum);
+        console.log(chooseNum);
       chooseSymbol = confirm("Do you want to include SYMBOLS in your password?")
-      console.log(chooseSymbol);
+        console.log(chooseSymbol);
       //Goes inside this condition only if user does not select any input character
       if (chooseLower === false && chooseUpper === false && chooseNum === false   
         && chooseSymbol === false) {
