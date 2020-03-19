@@ -14,7 +14,7 @@ var password,
   chooseSymbol
 
 //Prompt and Confirm user Input
-passwordLength = prompt("Please enter a Number betweeen 8 and 128");
+passwordLength = prompt("Please enter a Number betweeen '8' and '128'");
 if (passwordLength >= 8 && passwordLength <= 128) {
   console.log(passwordLength);
   chooseLower = confirm("Do you want to include LOWERCASE in your password?")
@@ -27,48 +27,40 @@ if (passwordLength >= 8 && passwordLength <= 128) {
   console.log(chooseSymbol);
   if (chooseLower === false && chooseUpper === false && chooseNum === false
     && chooseSymbol === false) {
-    alert("You must select atleat one input value to generate password ..");
+    alert("You MUST select atleast one character type input to generate password .");
   } else {
-    alert("Please click on GENERATE PASSWORD button to generate a new password")
+    alert("Please click on 'Generate Password' button to generate a new password.")
   }
 } else {
-  alert("You must select a number betweeen 8 and 128 to continue creating password..");
+  alert("You MUST select a number betweeen 8 and 128 to continue creating password..");
 }
 
 //Function to generate an array of random character type
 function generatePassword() {
   password = "";
-  randomCharType
-    = "";
+  randomCharType = "";
   if (chooseLower === true) {
-    randomCharType
-      += lowerCase;
-    //This means randomCharType = randomCharType + lowerCase 
+    randomCharType += lowerCase; //This means randomCharType = randomCharType + lowerCase 
   }
   if (chooseUpper === true) {
-    randomCharType
-      += upperCase;
+    randomCharType += upperCase;
   }
   if (chooseNum === true) {
-    randomCharType
-      += numbers;
+    randomCharType += numbers;
   }
   if (chooseSymbol === true) {
-    randomCharType
-      += symbols;
+    randomCharType += symbols;
   }
   for (var i = 0; i < passwordLength; i++) {
-    password += randomCharType
-      .charAt(Math.floor(Math.random() * randomCharType
-        .length));
+    password += randomCharType.charAt(Math.floor(Math.random() * randomCharType.length));
     /*
     This will select a random character from randomCharType
     variable, loops through all choices and += keeps adding to the password 
     untill the length is met..
     */
   }
-  // This alert will display user their new password everytime Generate Password is clicked
   /*
+  //This alert will display user their new password everytime Generate Password is clicked
   alert("Your New Secure Password is: " + password);
   */
 }
@@ -79,8 +71,7 @@ function writePassword() {
   // var passwordText = document.querySelector("#password"); THIS IS REPEAT FOR ME
   passwordText.innerHTML = password;
   console.log(password);
-
 }
 
 // Add event listener to generate button
-generateBtn.addEventListener("click", writePassword)
+generateBtn.addEventListener("click", writePassword);
